@@ -47,18 +47,14 @@ read_one_year <- function(read_this_year){
 }
 
 
-read_all_years <- function(){
-  years <- as.character(seq(1997, 2018))
-  
-  map(years, read_one_year)
-  
-}
-
 
 # Start the clock!
 ptm <- proc.time()
 
-read_all_years()
+years <- as.character(seq(1997, 2018))
+
+map(years, read_one_year)
+
 
 # Stop the clock
 proc.time() - ptm

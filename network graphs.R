@@ -12,10 +12,7 @@ create_graph_df_from_year <- function(year) {
   load(filename)
   
   step1 <- year_xml %>% 
-    mutate(para_len = str_length(paragraph_text), 
-
-           incorporation = str_detect(section_subject, "Incorporation")*1,
-           CFR_cite = str_count(paragraph_text, "CFR"),
+    mutate(CFR_cite = str_count(paragraph_text, "CFR"),
            CFR_ref_one = str_extract_all(paragraph_text, "\\d+ CFR part \\d+"),
            from = paste0("40 CFR part ", str_extract(part_number,"\\d+"))
     ) %>%
@@ -99,6 +96,7 @@ graph_one_year <- function(year) {
   
 }
 
+graph_one_year("2003")
 
 walk(as.character(seq(2003, 2018)), graph_one_year)
 #  
