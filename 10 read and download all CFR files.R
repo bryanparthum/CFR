@@ -51,7 +51,7 @@ read_one_year <- function(read_this_year){
 # Start the clock!
 ptm <- proc.time()
 
-years <- as.character(seq(1997, 2018))
+years <- as.character(seq(1997, 2019))
 
 map(years, read_one_year)
 
