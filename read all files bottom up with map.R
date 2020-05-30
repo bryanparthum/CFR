@@ -42,7 +42,7 @@ read_and_process_one_year <- function(year){
 
 
 
-#plan(multiprocess)
+plan(multiprocess)
 
 # Start the clock!
 ptm <- proc.time()
@@ -58,5 +58,15 @@ proc.time() - ptm
 ## a little over two hours each, a good 35 hours total
 
 ## 12.6 hours, 4x large (also saving w/ compressed = TRUE)
+## 5/29-5/30 finished 1997-2018 in approx 10.5 hours hung for 2019
+
+# function below took 97 minutes; 2018 took 36
 
 
+# Start the clock!
+ptm <- proc.time()
+
+read_and_process_one_year("2019")
+
+# Stop the clock
+proc.time() - ptm

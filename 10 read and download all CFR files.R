@@ -62,3 +62,4 @@ proc.time() - ptm
 
 
 ## 7907 seconds on EDAP large x2
+## 10734.036 seconds on 4x (with new download inc. 2019)
