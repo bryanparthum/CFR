@@ -12,7 +12,7 @@ if (!dir.exists(output_dir)){
   dir.create(output_dir, recursive = TRUE)
 }
 
-plan(multiprocess)
+
 
 read_and_process_one_year <- function(year){
   
@@ -42,7 +42,7 @@ read_and_process_one_year <- function(year){
 
 
 
-plan(multiprocess)
+#plan(multiprocess)
 
 # Start the clock!
 ptm <- proc.time()
@@ -62,6 +62,7 @@ proc.time() - ptm
 
 # function below took 97 minutes; 2018 took 36
 
+# 2561 sec for 1997, plan multiprocess 6/27/2020
 
 # Start the clock!
 ptm <- proc.time()

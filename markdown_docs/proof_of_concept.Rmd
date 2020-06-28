@@ -18,7 +18,7 @@ Computers make reading things better. This could help us better understand EPA's
 
 Existing studies of the CFR have helped a lot, but we think we can do better. Existing work has focused on the growth and complexity of the CFR in the US, other studies have looked and equivalent documents in France and England. These studies have benefited by treating their corpuses as networks, recognizing that regulatory codes consist of densely incorrection sections that cite each other.
 
-[explain structure]
+We retrieved the CFR from 1997-2018 from the Government Printing Office website. The data was in eXtensible Market Language (XML), which is useful because it's in a simplified format derived from and similar to the markup language used to produce the printed version of the CFR.
 
 Initially we study only citations from one part of Title 40 to another, specifically those which are of the form "'any number' CFR Part 'any number'" which is the simplest citation format in the CFR. This likely oversimplifies the resulting network but is also simple enough to demonstrate our approach.
 
