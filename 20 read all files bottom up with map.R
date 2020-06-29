@@ -4,7 +4,7 @@ library(furrr)
 
 source("bottom up functions with map.R")
 
-years <- as.character(seq(1997, 2018))
+years <- as.character(seq(1997, 2019))
 
 output_dir <- file.path(".", "data", "processed_xml_bottom_up")
 
@@ -42,7 +42,7 @@ read_and_process_one_year <- function(year){
 
 
 
-#plan(multiprocess)
+plan(multiprocess)
 
 # Start the clock!
 ptm <- proc.time()
@@ -60,9 +60,10 @@ proc.time() - ptm
 ## 12.6 hours, 4x large (also saving w/ compressed = TRUE)
 ## 5/29-5/30 finished 1997-2018 in approx 10.5 hours hung for 2019
 
-# function below took 97 minutes; 2018 took 36
 
 # 2561 sec for 1997, plan multiprocess 6/27/2020
+# EDAP 4x took 912 for 1997 6/28/20; 1997-2018 36183.00 = just over ten hours
+# 2127 for 2019 (omitted from code)
 
 # Start the clock!
 ptm <- proc.time()
