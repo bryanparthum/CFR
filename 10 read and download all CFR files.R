@@ -63,6 +63,7 @@ proc.time() - ptm
 ## 7907 seconds on EDAP large x2
 ## 10734.036 seconds on 4x (with new download inc. 2019)
 ## 8171 6/27 but error
+## 7853 on EDAP 6/28
 
 # Error in open.connection(x, "rb") : 
 #   Failed to connect to www.govinfo.gov port 80: Timed out
