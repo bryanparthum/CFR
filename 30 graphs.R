@@ -2,7 +2,7 @@ library(tidyverse)
 library(reshape2)
 
 
-years <- as.character(seq(1998, 2018))
+years <- as.character(seq(1997, 2019))
 
 read_one_year_processed_xml <- function(year) {
   
@@ -38,31 +38,42 @@ all_sections_incorporation <- all_sections_processed %>%
 
 all_sections_graph <- melt(all_sections_incorporation, id.vars = "CFR_year") %>%
   mutate(CFR_year = as.integer(CFR_year)) %>%
-  filter(CFR_year > 2001)
+  #filter(CFR_year > 2001) %>%
+  identity()
 
 
 ggplot(data = subset(all_sections_graph, variable == "all_incorporations"),
                      aes(x = CFR_year, y = value)) +
   geom_line() +
-  scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
+  scale_x_continuous(breaks = seq(1997, 2019, by =2)) +
   labs( y = "Count", x = "CFR year", title = "Growth in Incorporations by Reference, EPA CFR") +
+  theme_minimal()
+
+ggplot(data = subset(all_sections_graph, 
+                     variable == "all_incorporations" & CFR_year > 2001),
+       aes(x = CFR_year, y = value)) +
+  geom_line() +
+  scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
+  labs( y = "Count", x = "CFR year", title = "Incorporations by Reference, EPA CFR") +
   theme_minimal()
 
 #ggsave("./graphs/incorp by reference.png")
 
-ggplot(data = subset(all_sections_graph, variable == "all_CFRs"),
+ggplot(data = subset(all_sections_graph, 
+                     variable == "all_CFRs" & CFR_year > 2001),
        aes(x = CFR_year, y = value)) +
   geom_line() +
   scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Growth in CFR References, EPA CFR") +
+  labs( y = "Count", x = "CFR year", title = "Occurrences of 'CFR', EPA CFR") +
   theme_minimal()
 
 #ggsave("use of CFR.png")
 
 
-ggplot(data = subset(all_sections_graph, variable == "all_words_millions"),
+ggplot(data = subset(all_sections_graph, 
+                     variable == "all_words_millions" & CFR_year > 2001),
        aes(x = CFR_year, y = value)) +
   geom_line() +
   scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Growth in Number of Words (in Millions), EPA CFR") +
+  labs( y = "Count", x = "CFR year", title = "Number of Words (in Millions), EPA CFR") +
   theme_minimal()
