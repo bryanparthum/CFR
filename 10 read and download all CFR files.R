@@ -60,24 +60,11 @@ proc.time() - ptm
 
 
 
-## 7907 seconds on EDAP large x2
-## 10734.036 seconds on 4x (with new download inc. 2019)
-## 8171 6/27 but error
-## 7853 on EDAP 6/28
+# # Start the clock!
+# ptm <- proc.time()
+# 
+# read_one_year("2019")
+# 
+# # Stop the clock
+# proc.time() - ptm
 
-# Error in open.connection(x, "rb") : 
-#   Failed to connect to www.govinfo.gov port 80: Timed out
-# In addition: Warning message:
-#   In for (i in seq_len(n)) { :
-#       closing unused connection 3 (http://www.govinfo.gov/bulkdata/CFR/2002/title-40/CFR-2002-title40-vol9.xml)
-
-
-# Start the clock!
-ptm <- proc.time()
-
-read_one_year("2019")
-
-# Stop the clock
-proc.time() - ptm
-
-# 451 second for 2019
