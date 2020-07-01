@@ -12,7 +12,7 @@ get_one_volume <- function(volume_link, read_this_year, file_path){
   
   filename <- paste0("title40_",str_extract(volume_link, "vol\\d+"),"_", read_this_year, ".xml")
   
-  write_xml(CFR_volume, file = file.path(file_path, filename))
+  write_xml(CFR_volume, file = here::here(file_path, filename))
   
   Sys.sleep(10)
   
@@ -27,7 +27,7 @@ read_one_year <- function(read_this_year){
   
   get_year_url <- paste0("http://www.govinfo.gov/bulkdata/CFR/", read_this_year, "/title-40")
   
-  file_path <- file.path("data", "read_xml_from_web", read_this_year)
+  file_path <- here::here("data", "read_xml_from_web", read_this_year)
   
   if (!dir.exists(file_path))
     dir.create(file_path, recursive = TRUE)

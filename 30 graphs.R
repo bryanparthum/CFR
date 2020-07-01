@@ -1,12 +1,15 @@
 library(tidyverse)
 library(reshape2)
 
+theme_set(theme_minimal() + 
+            theme(plot.title.position = "plot", plot.caption.position = "plot"))
+
 
 years <- as.character(seq(1997, 2019))
 
 read_one_year_processed_xml <- function(year) {
   
-  filename <- file.path(".", "data", "processed_xml_bottom_up", paste0("processed_xml_", year, ".Rda"))
+  filename <- here::here("data", "processed_xml_bottom_up", paste0("processed_xml_", year, ".Rda"))
   
   # I have a note to rename the files as RDs so I can import them in w/ diff. names
   # all xml files should load as a df named year_xml
@@ -54,18 +57,18 @@ ggplot(data = subset(all_sections_graph,
        aes(x = CFR_year, y = value)) +
   geom_line() +
   scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Incorporations by Reference, EPA CFR") +
-  theme_minimal()
+  labs( y = "Count", x = "CFR year", 
+        title = "Incorporations by Reference, EPA CFR") 
 
 #ggsave("./graphs/incorp by reference.png")
 
 ggplot(data = subset(all_sections_graph, 
-                     variable == "all_CFRs" & CFR_year > 2001),
+                     variable == "all_CFRs"),
        aes(x = CFR_year, y = value)) +
   geom_line() +
-  scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Occurrences of 'CFR', EPA CFR") +
-  theme_minimal()
+  scale_x_continuous(breaks = seq(1997, 2019, by =2)) +
+  scale_y_continuous(breaks = seq(4000, 19000, by = 3000)) +
+  labs( y = "Count", x = "CFR year", title = "Occurrences of 'CFR', EPA CFR")
 
 #ggsave("use of CFR.png")
 
@@ -75,5 +78,4 @@ ggplot(data = subset(all_sections_graph,
        aes(x = CFR_year, y = value)) +
   geom_line() +
   scale_x_continuous(breaks = seq(2002, 2018, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Number of Words (in Millions), EPA CFR") +
-  theme_minimal()
+  labs( y = "Count", x = "CFR year", title = "Number of Words (in Millions), EPA CFR") 
