@@ -50,6 +50,7 @@ ggplot(data = subset(all_sections_graph, variable == "all_incorporations"),
   geom_line() +
   scale_x_continuous(breaks = seq(2001, 2019, by =2)) +
   labs( y = "Count", x = "CFR year", title = "Growth in Incorporations by Reference, EPA CFR") 
+
 ggplot(data = subset(all_sections_graph, 
                      variable == "all_incorporations" & CFR_year > 2001),
        aes(x = CFR_year, y = value)) +
