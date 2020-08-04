@@ -48,10 +48,8 @@ all_sections_graph <- melt(all_sections_incorporation, id.vars = "CFR_year") %>%
 ggplot(data = subset(all_sections_graph, variable == "all_incorporations"),
                      aes(x = CFR_year, y = value)) +
   geom_line() +
-  scale_x_continuous(breaks = seq(1997, 2019, by =2)) +
-  labs( y = "Count", x = "CFR year", title = "Growth in Incorporations by Reference, EPA CFR") +
-  theme_minimal()
-
+  scale_x_continuous(breaks = seq(2001, 2019, by =2)) +
+  labs( y = "Count", x = "CFR year", title = "Growth in Incorporations by Reference, EPA CFR") 
 ggplot(data = subset(all_sections_graph, 
                      variable == "all_incorporations" & CFR_year > 2001),
        aes(x = CFR_year, y = value)) +
