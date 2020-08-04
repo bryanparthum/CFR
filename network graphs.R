@@ -1,9 +1,27 @@
-library(tidyverse)
-library(igraph)
-library(tidygraph)
-library(ggraph)
-library(here)
+####################################################
+##########################################  PREAMBLE
+####################################################
 
+## Clear worksace
+rm(list = ls())
+gc()
+
+## This function will check if a package is installed, and if not, install it
+pkgTest <- function(x) {
+  if (!require(x, character.only = TRUE))
+  {
+    install.packages(x, dep = TRUE)
+    if(!require(x, character.only = TRUE)) stop("Package not found")
+  }
+}
+
+## These lines load the required packages
+packages <- c('tidyverse','igraph','tidygraph','ggraph','here') ## you can add more packages here
+lapply(packages, pkgTest)
+
+####################################################
+################################################  GO
+####################################################
 
 create_graph_df_from_year <- function(year) {
   
