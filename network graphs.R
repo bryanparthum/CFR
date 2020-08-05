@@ -1,9 +1,27 @@
-library(tidyverse)
-#library(igraph)
-library(tidygraph)
-library(ggraph)
-library(here)
+####################################################
+##########################################  PREAMBLE
+####################################################
 
+## Clear worksace
+rm(list = ls())
+gc()
+
+## This function will check if a package is installed, and if not, install it
+pkgTest <- function(x) {
+  if (!require(x, character.only = TRUE))
+  {
+    install.packages(x, dep = TRUE)
+    if(!require(x, character.only = TRUE)) stop("Package not found")
+  }
+}
+
+## These lines load the tidygraph packages
+packages <- c('tidyverse','tidygraph','ggraph','here') ## you can add more packages here
+lapply(packages, pkgTest)
+
+####################################################
+################################################  GO
+####################################################
 
 # function to create dataframe with node (to and from) names and counts of 
 # the number of such connections
