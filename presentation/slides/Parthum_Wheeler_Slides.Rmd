@@ -1,0 +1,59 @@
+---
+title: "Understanding the Code of Federal Regulations Through Natural Language Processing"
+# subtitle: "<html><div style='float:left'></div><hr color='#5171A5' size=1px width=720px></html>"
+author:
+  - Bryan Parthum and Will Wheeler
+  - U.S. EPA, National Center for Environmental Economics
+date: "<br /> `r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  xaringan::moon_reader:
+    css: ["Parthum_Wheeler_Slides_files/remark-css/epa.css", "Parthum_Wheeler_Slides_files/remark-css/epa-fonts.css"]
+    nature: 
+      beforeInit: "Parthum_Wheeler_Slides_files/header-attrs/header-attrs.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    seal: false
+---
+
+class: title-slide center
+
+background-image: url(Parthum_Wheeler_Slides_files/EPA_seal.png), url(Parthum_Wheeler_Slides_files/NCEE_seal.png)
+background-position: 35% 95%, 61% 93%
+background-size: 10%, 20%
+
+<br>
+<br>
+# Understanding the Code of Federal Regulations through Natural Language Processing 
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=720px></html>
+<br>
+<br>
+## Bryan Parthum and Will Wheeler <br> U.S. EPA, National Center for Environmental Economics <br> `r format(Sys.time(), '%B %d, %Y')`
+
+---
+
+class: remark-slide 
+
+# Motivation
+
+### Why natural language processing (NLP)?
+--
+count: false
+- NLP exploits machine reading of text
+- Provides a way to objectively view and score a document
+
+--
+count: false
+
+### Why the code of federal regulations (CFR)?
+--
+count: false
+- The CFR is incredibly complex (xx pages)
+- The CFR is a living document
+  
+--
+count: false
+### Objective
+- Capacity building: Apply NLP to the CFR 
+- Product: Ability to score, rank, and network parts and subparts of the CFR
