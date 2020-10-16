@@ -1,7 +1,7 @@
 .remark-slide-content {
   background-color: #FAFAFA;
   border-top: 80px solid #5171A5;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 300;
   line-height: 1.5;
   padding: 1em 2em 1em 2em
@@ -137,6 +137,18 @@ hr, .mline h1::after {
   padding: 4px;
 }
 
+.pull-left {
+  float: left;
+  width: 44%;
+}
+.pull-right {
+  float: right;
+  width: 44%;
+}
+.pull-right ~ p {
+  clear: both;
+}
+
 .code10 .remark-code {
   font-size: 10%;
 }
@@ -252,3 +264,17 @@ hr, .mline h1::after {
 .font200 {
   font-size: 200%;
 }
+
+a:link {
+  color: #5171A5;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #5171A5;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.tab { margin-left: 40px; }
