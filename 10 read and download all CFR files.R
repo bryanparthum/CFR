@@ -68,3 +68,6 @@ proc.time() - ptm
 # # Stop the clock
 # proc.time() - ptm
 
+
+x <- 9
+invisible(x <- 9)
