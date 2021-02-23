@@ -1,0 +1,199 @@
+---
+title: "Understanding the Code of Federal Regulations Through Natural Language Processing"
+# subtitle: "<html><div style='float:left'></div><hr color='#5171A5' size=1px width=720px></html>"
+author:
+  - Bryan Parthum and Will Wheeler
+  - U.S. EPA, National Center for Environmental Economics
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  xaringan::moon_reader:
+    css: ["Parthum_Wheeler_Slides_files/remark-css/default.css", "Parthum_Wheeler_Slides_files/remark-css/epa.css", "Parthum_Wheeler_Slides_files/remark-css/epa-fonts.css"]
+    nature:
+      beforeInit: "macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    seal: false
+header-includes:
+  \usepackage{amsfonts}
+---
+
+class: title-slide center
+
+background-image: url(Parthum_Wheeler_Slides_files/EPA_seal.png), url(Parthum_Wheeler_Slides_files/NCEE_seal.png)
+background-position: 35% 95%, 61% 93%
+background-size: 10%, 20%
+
+<br>
+<br>
+<h1>Understanding the Code of Federal Regulations through Natural Language Processing</h1>
+<html><div style='float:left'></div><hr size=1px width=720px></html>
+<br>
+<br>
+<h2>Bryan Parthum and Will Wheeler <br> U.S. EPA, National Center for Environmental Economics <br> `r format(Sys.time(), '%B %d, %Y')`</h2>
+
+---
+
+class: remark-slide
+
+<h1>Motivation</h1>
+
+<h2>What is the goal?</h2>
+
+  - The ability to quantify and classify the Code of Federal Regulations (CFR)
+  
+    - Think of this as capacity building. In order to ask interesting questions, we need to have the infrastructure in place to objectively read, process, and quantify federal documents.
+
+--
+count: false
+
+<h2>What do we mean by <span style="color:#01c748">quantify</span> and <span style="color:#004fb9">classify</span>?</h2>
+
+--
+count: false
+
+  - There are many metrics, each are useful in their own way
+    - Complexity within (<span style="color:#01c748">\# words</span>, <span style="color:#01c748">rarity</span>, etc.)
+    - Complexity across (<span style="color:#004fb9">networks</span>, <span style="color:#004fb9">dependencies</span>, etc.)
+  
+  - Note: In the CFR, these measures have variation within parts, across parts, and across time
+
+???
+
+Upstream processing that will be used as inputs to other applications
+Methods: classification using Bag of Words (BoW), Term Frequency Inverse Document Frequency (TF-IDF)
+
+---
+
+<h1>Text as Data <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195750" target="_blank" style="color:white">.font60[(Gentzkow et al. 2019)]</a></h1>
+
+<br>
+
+<h2><span style="color:#01c748"><bf>Quantify:</bf></span></h2>
+
+.tab[]1\. Represent raw text $\mathcal{D}$ as a numerical array $\bf{C}$
+
+<h2><span style="color:#004fb9"><bf>Classify:</bf></span></h2>
+
+.tab[]2\. Map $\bf{C}$ to predicted class $\widehat{\hskip-0.5pt \bf{V}}$ of unknown class $\bf{V}$
+
+<h2>Apply:</h2>
+
+.tab[]3\. Use $\widehat{\hskip-0.5pt \bf{V}}$ in subsequent descriptive or causal analysis
+
+???
+1. Reduce the dimensionality of the text
+2. Linking the text to categories of interest
+
+---
+
+<h1>NLP in Practice</h1>
+
+<h2>Economics:</h2>
+  - Effect of regulations on GDP (<a href="https://www.sciencedirect.com/science/article/abs/pii/S1094202520300223" target="_blank">Coffey et al. 2020</a>)
+  - Tracking evolution of methods in economics (<a href="https://www.aeaweb.org/articles?id=10.1257/pandp.20201058" target="_blank">Currie et al. 2020</a>)
+  - Understanding how people think about taxes (<a href="https://www.nber.org/papers/w27699" target="_blank">Stantcheva 2020; NBER</a>)
+  - Valuing climate amenities using social media posts (<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0195750" target="_blank">Baylis et al. 2018</a>, <a href="https://www.sciencedirect.com/science/article/abs/pii/S0047272720300256" target="_blank">Baylis 2020</a>)
+  - Predicting future citations using referee comments (<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2496624" target="_blank">Bandeh-Ahmadi, 2014</a>)
+  - Contract flexibility as a result of environmental regulations (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0144818813000811" target="_blank">Kosnik, 2014</a>)
+
+
+<h2>Government:</h2>
+  - Categorize public comments in rule-making (<a href="https://www.hhs.gov/cto/projects/increasing-efficiency-in-rule-making-with-natural-language-processing/index.html" target="_blank">HHS and EPA 2014</a>)
+  - Task complexity in EPA's Standard Operating Procedures (<a href="https://journals.sagepub.com/doi/abs/10.1177/1071181319631108" target="_blank">Bird et al. 2009</a>)
+
+---
+
+<h1>Why NLP and the CFR?</h1>
+
+.pull-left-c[<br><br>
+<img src="Parthum_Wheeler_Slides_files/word_count_over_time.png" width="500" height="300">
+]
+
+.pull-right-c[<br><br>
+<img src="Parthum_Wheeler_Slides_files/use_of_CFR_over_time.png" width="500" height="300">
+]
+
+---
+
+<h1>Products</h1>
+
+<br>
+<h2>1. Code and documentation</h2>
+  - Likely all in R, although there might be Python integration (all open source)
+  - Public and freely available on GitHub
+  
+
+<h2>2. NCEE Working Paper</h2>
+  - Summarize our approach to quantifying the CFR
+  - An application to several outcomes of interest
+
+---
+
+<h1>Applications</h1>
+
+<h2>Regulatory outcomes</h2>
+
+  - NPDES, SDWA, RCRA, CERCLA (Superfund), etc.
+  - Permitting: violations/non-compliance, proportion of applications approved, complaints
+  - Litigation: length, contract completeness
+  - EPA regulations that fall under other agencies (USGS, USDA, etc.)
+  - Regulation across media (are water regs consistent with air, etc.)<sup>1</sup>
+
+<h2>Environmental outcomes</h2>
+
+  - Surface water and air quality (WQI/AQI)
+  - Drinking water quality, test outcomes, etc.
+  - Specific toxics as endpoints (how can we show the different ways that lead is regulated)<sup>1</sup>
+
+.font60[[1] Examples of outcomes that are internal to the CFR]
+
+---
+
+<h1>Econometrics</h1>
+
+<h2>What does a regression look like?</h2>
+
+Outcome of interest $y$ such that: $y_{{\small \bf{V}}t}=\bf{X}\beta + \Phi(\bf{C}_{{\small \widehat{\hskip-0.5pt \bf{V}}}t})\delta + \varepsilon_{{\small \bf{V}}t}$
+
+  - $\bf{C}$ is upstream NLP processing of $\mathcal{D}$ (<span style="color:#01c748">quantify</span>)
+  - $\widehat{\hskip-0.5pt \bf{V}}$ is predicted class using ML (<span style="color:#004fb9">classify</span>)
+  
+  - $\Phi(\bf{C}_{{\small \widehat{\hskip-0.5pt \bf{V}}}t})$ can consist of many metrics/features:
+    - sum of word/phrase count (simple "token" score)
+    - sum of TF-IDF scores in part/subpart
+    - relational/network features of other parts $\in\mathcal{D}$
+    - relational/network features of other documents $\notin\mathcal{D}$
+  
+---
+
+<h1>Other Applications and Extensions</h1>
+
+<h2>Other applications and extensions</h2>
+  - Spatial distribution of Title 40 (map network/complexity to geographical units, demographics, industries)
+  - Link to ICRs and Guidance
+  - Leadership influence on network/complexity (i.e. $\bf{C}_{{\small \widehat{\hskip-0.5pt \bf{V}}}t}$ becomes dependent variable)
+  - Apply text methods to permits, consumer confidence reports, FOIA, and on and on
+
+---
+
+<h1>An example from the CFR</h1>
+
+<h2>Title 40, part , subpart</h2>
+  
+---
+
+<h1>Term Frequency-Inverse Document Frequency (TF-IDF)</h1>
+
+The TF-IDF score $\Psi$, for word $i$, of section $s$, in document $d$:
+
+$$\Psi_{isd}=TF_{id} \times IDF_{id}\tag{1}$$
+<br>
+where Term Frequency $TF$:
+
+$$TF_{isd} = log(1+freq_{is})\tag{2}$$
+<br>
+and Inverse Document Frequency $IDF$:
+
+$$IDF_{id} = log(\frac{N_{s}}{N_{s}|_{i \in s}})\tag{3}$$
